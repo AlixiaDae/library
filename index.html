@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="shelf">
+        
+    </div>
+    <form action="">
+        <legend>New Book</legend>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+        <label for="pages">No. of pages</label>
+        <input type="text" name="pages" id="pages">
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+            <option value="inprogress">In Progress</option>
+        </select>
+        <button id="submit">Submit</button>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>
