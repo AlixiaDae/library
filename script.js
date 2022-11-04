@@ -20,6 +20,7 @@ Book.prototype.addtoLibraryArray = (book) => {
     }
 }
 
+
 const shelf = document.querySelector('.shelf')
 
 function showBooks() {
@@ -64,6 +65,19 @@ const createBookCard = (book) => {
     bookCard.appendChild(removeBtn)
     shelf.appendChild(bookCard)
 
+    status.addEventListener('click', () => {
+        if (status.className == 'green') {
+            status.className = 'red'
+            book.status = 'unread'
+        } else  if(status.className == 'red') {
+            status.className = 'orange'
+            book.status = 'inprogress'
+        } else if(status.className = 'orange') {
+            status.className = 'green'
+            book.status = 'read'
+        }
+    })
+
     removeBtn.addEventListener('click', () => {
         
     })
@@ -88,5 +102,17 @@ submitBtn.addEventListener('click' , (input) => {
     newBook.addtoLibraryArray(newBook)
     showBooks()
 })
+
+const addBookBtn = document.querySelector('.add-book')
+const form = document.querySelector('form')
+
+addBookBtn.addEventListener('click', (btn) => {
+    if(form.style.opacity !== '1') {
+        form.style.opacity = '1'
+    } else {
+        form.style.opacity = '0'
+    }
+})
+    
 
 showBooks()
