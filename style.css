@@ -114,3 +114,11 @@ legend {
 .add-book:hover {
     background-color: rgb(185, 49, 49);
 }
+
+
+a {
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+    color: whitesmoke;
+}
