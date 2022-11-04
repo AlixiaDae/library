@@ -78,8 +78,11 @@ const createBookCard = (book) => {
         }
     })
 
-    removeBtn.addEventListener('click', () => {
-        
+    removeBtn.addEventListener('click', (btn) => {
+        if (bookCard.dataset.attribute == `${book.title}`) {
+            bookCard.remove()
+            myLibrary.splice(book,1)
+        }
     })
 }
 
