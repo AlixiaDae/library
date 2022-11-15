@@ -120,25 +120,68 @@
 
 // showBooks()
 
+class Book {
+    constructor(
+        title,
+        author,
+        pages,
+        status
+    ) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+}
 
 class Library {
-    constructor(book) {
-        this.bookName = book;
+    constructor() {
+        this.books = []
     }
 
-
+    addBook(newBook) {
+        if (!this.isInLibrary(newBook)) {
+        this.books.push(newBook)
+        console.log(this.books)
+        } else {
+            alert('Book is already in the library!')
+        }
+    }
+    
+    isInLibrary(newBook) {
+        return this.books.some((book) => book.title === newBook.title);
+    }
 
 }
 
 const addBookBtn = document.querySelector('.add-book');
 const bookForm = document.querySelector('form');
+const submitBookBtn = document.getElementById('submit');
 
-function showForm() {
-    if(bookForm.style.opacity == 0) {
-    bookForm.style.opacity = '1';
-    } else {
-        return;
-    }
+const library = new Library();
+
+const getBookFromInput = () => {
+    const title = document.getElementById('title').value
+    const author = document.getElementById('author').value
+    const pages = document.getElementById('pages').value
+    const status = document.getElementById('status').value
+    return new Book(title,author,pages,status)
 }
 
-addBookBtn.addEventListener('click', showForm)
+const addBook = (e) => {
+    e.preventDefault();
+    const newBook = getBookFromInput();
+
+    library.addBook(newBook);
+
+}
+
+addBookBtn.addEventListener('click', () => {
+    if(bookForm.style.opacity == 0) {
+        bookForm.style.opacity = '1';
+        } else {
+            return;
+        }
+});
+
+submitBookBtn.addEventListener('click', addBook);
